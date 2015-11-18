@@ -16,16 +16,20 @@ BitReverse::~BitReverse() {
 	// TODO Auto-generated destructor stub
 }
 
-vector<float> BitReverse::ReverseVertor(vector<float> tableau){
-	vector<float> vectors;
+vector<float> BitReverse::ReverseVector(vector<float> tableau){
 	int size = tableau.size();
+	vector<float> vectors(size);
 
-	for(int i = 0; i<size/2-1;i++){
-
+	for(int i = 0; i<size;i++){
+		string s, s_inv;
+		int nb;
+		s = ConvertIntToBinary(tableau[i]);
+		s_inv = ReverseString(s);
+		nb = ConvertBinaryToInt(s_inv);
+		vectors[i] = nb;
 	}
 
 	return vectors;
-
 }
 
 string BitReverse::ConvertIntToBinary(int n){

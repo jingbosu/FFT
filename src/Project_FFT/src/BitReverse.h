@@ -16,7 +16,7 @@ class BitReverse {
 public:
 	BitReverse();
 	virtual ~BitReverse();
-	vector<float> ReverseVertor(vector<float> tableau);
+	vector<float> ReverseVector(vector<float> tableau);
 	string ConvertIntToBinary(int i);
 	string ReverseString(string s);
 	int ConvertBinaryToInt(string s);
