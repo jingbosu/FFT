@@ -9,13 +9,17 @@
 #define BITREVERSE_H_
 #include <vector>
 #include <iostream>
+#include <bitset>
 using namespace std;
 
 class BitReverse {
 public:
 	BitReverse();
 	virtual ~BitReverse();
-	float* ReverseVertor(float*);
+	vector<float> ReverseVertor(vector<float> tableau);
+	string ConvertIntToBinary(int i);
+	string ReverseString(string s);
+	int ConvertBinaryToInt(string s);
 };
 
 #endif /* BITREVERSE_H_ */
