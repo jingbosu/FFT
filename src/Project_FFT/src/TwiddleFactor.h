@@ -7,18 +7,20 @@
 
 #ifndef TWIDDLEFACTOR_H_
 #define TWIDDLEFACTOR_H_
+
 #include <iostream>
 #include <vector>
 #include <complex>
 using namespace std;
 
-#define PI 3.14159
+#define PI 3.141592653589793
 #define N 1024
 
 class TwiddleFactor {
 public:
 	TwiddleFactor();
 	virtual ~TwiddleFactor();
+
 	vector<complex<float>> CalculFactors();
 	vector<complex<float>> vec_comp;
 };

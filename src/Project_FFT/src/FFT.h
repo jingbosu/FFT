@@ -7,6 +7,7 @@
 
 #ifndef FFT_H_
 #define FFT_H_
+
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -20,10 +21,8 @@ class FFT {
 public:
 	FFT();
 	virtual ~FFT();
+
 	vector<complex<float>> calculFFT(vector<float> data_in);
-	complex<float> multiplicationComplex(float f, complex<float>);
-	complex<float> additionComplex(float f, complex<float>);
-	complex<float> soustractionComplex(float f, complex<float>);
 };
 
 #endif /* FFT_H_ */

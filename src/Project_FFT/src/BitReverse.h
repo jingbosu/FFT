@@ -7,17 +7,20 @@
 
 #ifndef BITREVERSE_H_
 #define BITREVERSE_H_
+
 #include <vector>
 #include <iostream>
 #include <bitset>
+#include <complex>
 using namespace std;
 
 class BitReverse {
 public:
 	BitReverse();
 	virtual ~BitReverse();
-	vector<float> ReverseVector(vector<float> tableau);
-	string ConvertIntToBinary(int i);
+
+	vector<complex<float>> ReverseVector(vector<float> tableau);
+	string ConvertIntToBinary(int i, int size);
 	string ReverseString(string s);
 	int ConvertBinaryToInt(string s);
 };
