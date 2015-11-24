@@ -16,8 +16,6 @@
 
 using namespace std;
 
-#define N 1024
-
 class FFT {
 public:
 	FFT();

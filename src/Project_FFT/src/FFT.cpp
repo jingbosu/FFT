@@ -23,51 +23,33 @@ vector<complex<float>> FFT::calculFFT(vector<float> data_in){
 	int decalage_ligne = 0;
 	int etage, j, p, k;
 	vector<complex<float>> data_final(N);
+	vector<complex<float>> data_temp(N);
 
+	for(int i=0; i<N;i++){
+		data_temp[i] = (complex<float>) data_in[i];
+	}
 	/////////////////////Calculer bit reverse/////////////
 	BitReverse bit;
 	vector<float> data_reversed;
 	data_reversed = bit.ReverseVector(data_in);
 
 	///////////////////Calculer les coefficients//////////
-	TwiddleFactor tw;
-	vector<complex<float>> vec_comp;
-	vec_comp = tw.CalculFactors();
 
+	TwiddleFactor* tw = new TwiddleFactor();
 	for (etage = 1; etage<=nb_etage; etage++){
 		decalage_ligne = pow(2, etage-1);
 		for (j = 0; j<=decalage_ligne-1; j++){
 			p = pow(2, nb_etage-etage)*j;
 			for (k = j; j<=N-1; pow(2,etage)){
 				//Mais la relation entre data_in et data_out?
-//				data_final(k) = data_final(k) + data_final(k+decalage_ligne)*vec_comp(p);
-//				data_final(k+decalage_ligne) = data_final(k) - data_final(k+decalage_ligne)*vec_comp(p);
+				data_final[k] = data_temp[k] + data_temp[k+decalage_ligne]*tw->vec_comp[p];
+				data_final[k+decalage_ligne] = data_temp[k] - data_temp[k+decalage_ligne]*tw->vec_comp[p];
 			}
+		}
+
+		for(int i=0; i<N;i++){
+			data_temp[i] = data_final[i];
 		}
 	}
 	return data_final;
-}
-
-complex<float> multiplicationComplex(float f, complex<float> cp){
-	complex<float> result;
-	complex<float> temp;
-	temp = (complex<float>)f;
-	result = temp * cp;
-	return result;
-}
-
-complex<float> additionComplex(float f, complex<float> cp){
-	complex<float> result;
-	complex<float> temp;
-	temp = (complex<float>)f;
-	result = temp + cp;
-	return result;
-}
-
-complex<float> soustractionComplex(float f, complex<float> cp){
-	complex<float> result;
-	complex<float> temp;
-	temp = (complex<float>)f;
-	result = temp - cp;
-	return result;
 }

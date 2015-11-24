@@ -9,13 +9,15 @@
 
 
 TwiddleFactor::TwiddleFactor() {
-	// TODO Auto-generated constructor stub
+	vec_comp = CalculFactors();
 
 }
 
 TwiddleFactor::~TwiddleFactor() {
 	// TODO Auto-generated destructor stub
 }
+
+
 
 vector<complex<float>> TwiddleFactor:: CalculFactors(){
 	vector<complex<float>> v(512);

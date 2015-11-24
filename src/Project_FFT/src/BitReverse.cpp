@@ -19,10 +19,10 @@ BitReverse::~BitReverse() {
 vector<float> BitReverse::ReverseVector(vector<float> tableau){
 	int size = tableau.size();
 	vector<float> vectors(size);
+	string s, s_inv;
+	int nb;
 
 	for(int i = 0; i<size;i++){
-		string s, s_inv;
-		int nb;
 		s = ConvertIntToBinary(tableau[i]);
 		s_inv = ReverseString(s);
 		nb = ConvertBinaryToInt(s_inv);
