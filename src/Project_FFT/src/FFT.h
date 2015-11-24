@@ -22,7 +22,7 @@ public:
 	FFT();
 	virtual ~FFT();
 
-	vector<complex<float>> calculFFT(vector<float> data_in);
+	vector<complex<float> > calculFFT(vector<float> data_in);
 };
 
 #endif /* FFT_H_ */

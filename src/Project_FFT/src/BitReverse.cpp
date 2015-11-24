@@ -15,9 +15,9 @@ BitReverse::~BitReverse() {
 	// TODO Auto-generated destructor stub
 }
 
-vector<complex<float>> BitReverse::ReverseVector(vector<float> tableau){
+vector<complex<float> > BitReverse::ReverseVector(vector<float> tableau){
 	int size = tableau.size();
-	vector<complex<float>> vectors(size);
+	vector<complex<float> > vectors(size);
 	string s, s_inv;
 	int nb;
 

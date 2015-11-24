@@ -16,8 +16,8 @@ TwiddleFactor::~TwiddleFactor() {
 	// TODO Auto-generated destructor stub
 }
 
-vector<complex<float>> TwiddleFactor:: CalculFactors(){
-	vector<complex<float>> v(512);
+vector<complex<float> > TwiddleFactor:: CalculFactors(){
+	vector<complex<float> > v(512);
 	complex<float> c;
 	float r, theta_radians;
 	r = 1;

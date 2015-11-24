@@ -21,8 +21,8 @@ public:
 	TwiddleFactor();
 	virtual ~TwiddleFactor();
 
-	vector<complex<float>> CalculFactors();
-	vector<complex<float>> vec_comp;
+	vector<complex<float> > CalculFactors();
+	vector<complex<float> > vec_comp;
 };
 
 #endif /* TWIDDLEFACTOR_H_ */

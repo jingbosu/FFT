@@ -19,7 +19,7 @@ public:
 	BitReverse();
 	virtual ~BitReverse();
 
-	vector<complex<float>> ReverseVector(vector<float> tableau);
+	vector<complex<float> > ReverseVector(vector<float> tableau);
 	string ConvertIntToBinary(int i, int size);
 	string ReverseString(string s);
 	int ConvertBinaryToInt(string s);
