@@ -11,6 +11,9 @@
 #include <iostream>
 #include <vector>
 #include <complex>
+#include "ac_complex.h"
+
+
 using namespace std;
 
 #define PI 3.141592653589793
@@ -21,8 +24,8 @@ public:
 	TwiddleFactor();
 	virtual ~TwiddleFactor();
 
-	vector<complex<float> > CalculFactors();
-	vector<complex<float> > vec_comp;
+	vector<ac_complex<ac_fixed<32, 16, true> > > CalculFactors();
+	vector<ac_complex<ac_fixed<32, 16, true> > > vec_comp;
 };
 
 #endif /* TWIDDLEFACTOR_H_ */

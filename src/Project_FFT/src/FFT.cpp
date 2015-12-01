@@ -15,27 +15,27 @@ FFT::~FFT() {
 	// TODO Auto-generated destructor stub
 }
 
-vector<complex<float> > FFT::calculFFT(vector<float> data_in){
+vector<ac_complex<ac_fixed<32, 16, true> > > FFT::calculFFT(vector<ac_fixed<32, 16, true> > data_in){
 	//calculer l'etage de papillon
-	int nb_etage = log2(N);
+	ac_int<32, true> nb_etage = log2(N);
 
-	int decalage_ligne = 0;
-	int etage, j, p, k;
-	vector<complex<float> > data_final(N);
+	ac_int<32, true> decalage_ligne = 0;
+	ac_int<32, true> etage, j, p, k, decale;
+	vector<ac_complex<ac_fixed<32, 16, true> > > data_final(N);
 
 	/////////////////////Calculer bit reverse/////////////
 	BitReverse bit;
-	vector<complex<float> > data_reversed;
+	vector<ac_complex<ac_fixed<32, 16, true> > > data_reversed;
 	data_reversed = bit.ReverseVector(data_in);
 
 	///////////////////Calculer les coefficients//////////
-
 	TwiddleFactor* tw = new TwiddleFactor();
 	for (etage = 1; etage <= nb_etage; etage++){
-		decalage_ligne = pow(2.0, etage-1);
+		decalage_ligne =  (1 << (etage-1));
 		for (j = 0; j <= decalage_ligne-1; j++){
-			p = pow(2.0, nb_etage-etage)*j;
-			for (k = j; k <= N-1; k += pow(2.0, etage)){
+			p = j << (nb_etage-etage);
+			decale = 1 << etage;
+			for (k = j; k <= N-1; k += decale){
 				data_final[k] = data_reversed[k] + data_reversed[k+decalage_ligne]*tw->vec_comp[p];
 				data_final[k+decalage_ligne] = data_reversed[k] - data_reversed[k+decalage_ligne]*tw->vec_comp[p];
 			}

@@ -10,11 +10,11 @@
 #include <iostream>
 using namespace std;
 
-int main() {
+ac_int<32, true> main() {
 
 	FFT cal;
 	// define N 8 dans tw.h
-	vector<float> tableau(8);
+	vector<ac_fixed<32, 16, true> > tableau(8);
 	tableau[0] = 0;
 	tableau[1] = 15;
 	tableau[2] = 2;
@@ -25,10 +25,10 @@ int main() {
 	tableau[7] = 7;
 	
 	// {0, 15, 2, 30, 4, 57, 6, 7};
-	vector<complex<float> > tableau_c;
+	vector<ac_complex<ac_fixed<32, 16, true> > > tableau_c;
 
 	tableau_c = cal.calculFFT(tableau);
-	for (int i = 0; i < tableau_c.size(); i++) {
+	for (ac_int<32, true> i = 0; i < tableau_c.size(); i++) {
 		cout << "tab[" << i << "] = " << tableau_c[i] << endl;
 	}
 	return 0;

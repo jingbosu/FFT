@@ -16,13 +16,13 @@
 #include "TwiddleFactor.h"
 
 using namespace std;
-
+//float = ac_fixed<32, 16, true>
 class FFT {
 public:
 	FFT();
 	virtual ~FFT();
 
-	vector<complex<float> > calculFFT(vector<float> data_in);
+	vector<ac_complex<ac_fixed<32, 16, true> > > calculFFT(vector<ac_fixed<32, 16, true> > data_in);
 };
 
 #endif /* FFT_H_ */
