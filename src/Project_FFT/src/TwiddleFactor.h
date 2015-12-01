@@ -17,7 +17,7 @@
 using namespace std;
 
 #define PI 3.141592653589793
-#define N 1024
+#define N 8
 
 class TwiddleFactor {
 public:

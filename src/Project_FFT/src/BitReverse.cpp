@@ -17,6 +17,7 @@ BitReverse::~BitReverse() {
 
 vector<ac_complex<ac_fixed<32, 16, true> > > BitReverse::ReverseVector(vector<ac_fixed<32, 16, true> > tableau){
 	ac_int<32, true> size = tableau.size();
+	cout<<size<<endl;
 	if(size != N){
 		cout << "You need to change value of N !";
 		exit(EXIT_FAILURE);

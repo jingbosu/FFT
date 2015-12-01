@@ -10,7 +10,7 @@
 #include <iostream>
 using namespace std;
 
-ac_int<32, true> main() {
+int main() {
 
 	FFT cal;
 	// define N 8 dans tw.h
