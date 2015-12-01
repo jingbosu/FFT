@@ -17,8 +17,8 @@
 using namespace std;
 
 void CalculateSin(){
-		vector<ac_fixed<32, 16, true> > cos_value;
-		vector<ac_fixed<32, 16, true> > sin_value;
+		vector<ac_fixed<32, 16, true> > cos_value(512);
+		vector<ac_fixed<32, 16, true> > sin_value(512);
 
 		float  r, theta_radians;
 		r = 1;
@@ -29,11 +29,12 @@ void CalculateSin(){
 			theta_radians = -(PI*i)/256;
 			temp = polar(r, theta_radians);
 
-			cos_value[i] = temp.real();
+			//cos_value[i] = temp.real();
 			sin_value[i] = temp.imag();
 
-			cout << "cos_value[" << i << "] = " << cos_value[i] << endl;
-			cout << "sin_value[" << i << "] = " << sin_value[i] << endl;
+			//cout << "cos_value[" << i << "] = " << cos_value[i] << endl;
+			//cout << "sin_value[" << i << "] = " << sin_value[i] << endl;
+			cout<<sin_value[i]<<","<<endl;
 		}
 }
 
