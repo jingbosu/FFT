@@ -57,7 +57,7 @@
 #ifndef __AC_COMPLEX_H
 #define __AC_COMPLEX_H
 
-#include <ac_fixed.h>
+#include "ac_fixed.h"
 
 #if ( AC_VERSION == 1 && AC_VERSION_MINOR < 4 )
 #error ac_complex requires ac_int/ac_fixed header files versions 1.4 or above 
