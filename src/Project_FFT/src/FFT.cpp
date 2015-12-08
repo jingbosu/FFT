@@ -39,7 +39,8 @@ void CalculFactors(ac_complex<ac_fixed<32, 16, true> > v[512]){
 
 void calculFFT(ac_complex<ac_fixed<32, 16, true> > data_in[N], ac_complex<ac_fixed<32, 16, true> >data_final[N]){
 	//calculer l'etage de papillon
-	ac_int<32, true> nb_etage = log2(N);
+	//ac_int<32, true> nb_etage = log2(N);
+	ac_int<32, true> nb_etage = ac::log2_ceil<N>::val;
 
 	ac_int<32, true> decalage_ligne = 0;
 	ac_int<32, true> etage, j, p, k, decale;
