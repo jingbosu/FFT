@@ -18,7 +18,8 @@ using namespace std;
 
 void ReverseVector(ac_complex<ac_fixed<32, 16, true> > tableau[N], ac_complex<ac_fixed<32, 16, true> > vectors[N]){
 	ac_int<32, true> k = 0;
-	int logN = log2(N);
+	//int logN = log2(N);
+	ac_int<32, true> logN = ac::log2_ceil<N>::val;
 	for (ac_int<32, true> i = 0; i < N; i++) {
 		for (int j = 0; j < logN; j++) {
 			k[j] = i[logN - 1 - j];
