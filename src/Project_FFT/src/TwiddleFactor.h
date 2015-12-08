@@ -12,7 +12,8 @@
 #include <vector>
 #include <complex>
 #include "ac_complex.h"
-
+#include "Sin.h"
+#include "Cos.h"
 
 using namespace std;
 

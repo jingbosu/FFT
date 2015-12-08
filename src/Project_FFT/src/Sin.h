@@ -11,7 +11,7 @@
 #include "vector"
 using namespace std;
 
-ac_fixed<32, 16, true> value_sin[512] = {
+static ac_fixed<32, 16, true> value_sin[512] = {
 		0,
 		-.01226806640625,
 		-.0245361328125,

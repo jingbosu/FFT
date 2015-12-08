@@ -6,8 +6,7 @@
  */
 
 #include "TwiddleFactor.h"
-#include "Sin.h"
-#include "Cos.h"
+
 
 TwiddleFactor::TwiddleFactor() {
 	vec_comp = CalculFactors();

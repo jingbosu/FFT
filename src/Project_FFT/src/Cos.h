@@ -9,9 +9,8 @@
 #define COS_H_
 
 #include "vector"
-using namespace std;
 
-ac_fixed<32, 16, true> value_cos[512] = {
+static ac_fixed<32, 16, true> value_cos[512] = {
 		1,
 		.9999237060546875,
 		.99969482421875,
