@@ -14,7 +14,7 @@
 #include "Cos.h"
 using namespace std;
 #define PI 3.141592653589793
-#define N 8
+#define N 4
 
 void ReverseVector(ac_complex<ac_fixed<32, 16, true> > tableau[N], ac_complex<ac_fixed<32, 16, true> > vectors[N]){
 	ac_int<32, true> k = 0;
@@ -70,23 +70,60 @@ void calculFFT(ac_complex<ac_fixed<32, 16, true> > data_in[N], ac_complex<ac_fix
 	}
 }
 
+void binningData(ac_complex<ac_fixed<32, 16, true> > matrix_entry[N][N], ac_complex<ac_fixed<32, 16, true> > vector[N]){
+	int i,j;
+	for (i = 0; i < N; i++){
+		ac_complex<ac_fixed<32, 16, true> > somme = 0;
+		for (j = 0; j < N; j++){
+			somme += matrix_entry[j][i];
+		}
+		vector[i] = somme;
+	}
+}
+
 int main() {
 
-	// define N 8 dans tw.h
 	ac_complex<ac_fixed<32, 16, true> > tableau[N];
-	tableau[0] = 0;
-	tableau[1] = 15;
-	tableau[2] = 2;
-	tableau[3] = 30;
-	tableau[4] = 4;
-	tableau[5] = 57;
-	tableau[6] = 6;
-	tableau[7] = 7;
-
-	// {0, 15, 2, 30, 4, 57, 6, 7};
 	ac_complex<ac_fixed<32, 16, true> > tableau_c[N];
+	ac_complex<ac_fixed<32, 16, true> > matrix_entry[N][N];
+//	tableau[0] = 0;
+//	tableau[1] = 15;
+//	tableau[2] = 2;
+//	tableau[3] = 30;
+//	tableau[4] = 4;
+//	tableau[5] = 57;
+//	tableau[6] = 6;
+//	tableau[7] = 7;
+
+//	calculFFT(tableau, tableau_c);
+//	for (ac_int<32, true> i = 0; i < N; i++) {
+//		cout << "tab[" << i << "] = " << tableau_c[i] << endl;
+//	}
+
+	matrix_entry[0][0] = 0;
+	matrix_entry[0][1] = 1;
+	matrix_entry[0][2] = 2;
+	matrix_entry[0][3] = 3;
+	matrix_entry[1][0] = 4;
+	matrix_entry[1][1] = 5;
+	matrix_entry[1][2] = 6;
+	matrix_entry[1][3] = 7;
+	matrix_entry[2][0] = 8;
+	matrix_entry[2][1] = 9;
+	matrix_entry[2][2] = 10;
+	matrix_entry[2][3] = 11;
+	matrix_entry[3][0] = 12;
+	matrix_entry[3][1] = 13;
+	matrix_entry[3][2] = 14;
+	matrix_entry[3][3] = 15;
+	binningData(matrix_entry, tableau);
+	cout << "--------------TAB------------"<<endl;
+	for (ac_int<32, true> i = 0; i < N; i++) {
+			cout << "tab[" << i << "] = " << tableau[i] << endl;
+	}
 
 	calculFFT(tableau, tableau_c);
+	cout << "--------------TAB_C------------"<<endl;
 	for (ac_int<32, true> i = 0; i < N; i++) {
 		cout << "tab[" << i << "] = " << tableau_c[i] << endl;
 	}
