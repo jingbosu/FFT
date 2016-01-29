@@ -50,7 +50,7 @@ void calculAmplitude(ac_complex<ac_fixed<32, 16, true> >data_in[N], ac_fixed<32,
 	}
 }
 
-void calculFFT(ac_complex<ac_fixed<32, 16, true> > data_in[N], ac_complex<ac_fixed<32, 16, true> >data_final[N]){
+void calculFFT(ac_complex<ac_fixed<32, 16, true> > data_in[N], ac_fixed<32, 16, true> data_ampli[N]){
 	//calculer l'etage de papillon
 	//ac_int<32, true> nb_etage = log2(N);
 	ac_int<32, true> nb_etage = ac::log2_ceil<N>::val;
@@ -58,6 +58,7 @@ void calculFFT(ac_complex<ac_fixed<32, 16, true> > data_in[N], ac_complex<ac_fix
 	ac_int<32, true> decalage_ligne = 0;
 	ac_int<32, true> etage, j, p, k, decale;
 
+	ac_complex<ac_fixed<32, 16, true> > data_final[N];
 	/////////////////////Calculer bit reverse/////////////
 	ac_complex<ac_fixed<32, 16, true> > data_reversed[N];
 	ReverseVector(data_in, data_reversed);
@@ -80,7 +81,9 @@ void calculFFT(ac_complex<ac_fixed<32, 16, true> > data_in[N], ac_complex<ac_fix
 			data_reversed[i] = data_final[i];
 		}
 	}
+	calculAmplitude(data_final, data_ampli);
 }
+
 
 void binningData(ac_complex<ac_fixed<32, 16, true> > matrix_entry[N][N], ac_complex<ac_fixed<32, 16, true> > vector[N]){
 	int i,j;
@@ -95,7 +98,6 @@ void binningData(ac_complex<ac_fixed<32, 16, true> > matrix_entry[N][N], ac_comp
 
 int main() {
 	ac_complex<ac_fixed<32, 16, true> > tableau[N];
-	ac_complex<ac_fixed<32, 16, true> > tableau_c[N];
 	ac_complex<ac_fixed<32, 16, true> > matrix_entry[N][N];
 	ac_fixed<32, 16, true> tableau_ampli[N];
 
@@ -116,20 +118,13 @@ int main() {
 	matrix_entry[3][2] = 14;
 	matrix_entry[3][3] = 15;
 
-
 	binningData(matrix_entry, tableau);
 	cout << "--------------TAB------------"<<endl;
 	for (ac_int<32, true> i = 0; i < N; i++) {
 			cout << "tab[" << i << "] = " << tableau[i] << endl;
 	}
 
-	calculFFT(tableau, tableau_c);
-	cout << "--------------TAB_C------------"<<endl;
-	for (ac_int<32, true> i = 0; i < N; i++) {
-		cout << "tab[" << i << "] = " << tableau_c[i] << endl;
-	}
-
-	calculAmplitude(tableau_c, tableau_ampli);
+	calculFFT(tableau, tableau_ampli);
 	cout << "--------------TAB_AMPLI------------"<<endl;
 	for (ac_int<32, true> i = 0; i < N; i++) {
 		cout << "tab[" << i << "] = " << tableau_ampli[i] << endl;
