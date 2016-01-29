@@ -38,6 +38,18 @@ void CalculFactors(ac_complex<ac_fixed<32, 16, true> > v[512]){
 	}
 }
 
+void calculAmplitude(ac_complex<ac_fixed<32, 16, true> >data_in[N], ac_fixed<32, 16, true> data_ampli[N]){
+	int i;
+	ac_fixed<32, 16, true> carre;
+	double carre_double;
+	for (i = 0; i < N; i++){
+		carre = data_in[i].mag_sqr();
+		carre_double = carre.to_double();
+		carre_double = sqrt(carre_double);
+		data_ampli[i] = (ac_fixed<32, 16, true>) carre_double;
+	}
+}
+
 void calculFFT(ac_complex<ac_fixed<32, 16, true> > data_in[N], ac_complex<ac_fixed<32, 16, true> >data_final[N]){
 	//calculer l'etage de papillon
 	//ac_int<32, true> nb_etage = log2(N);
@@ -82,23 +94,10 @@ void binningData(ac_complex<ac_fixed<32, 16, true> > matrix_entry[N][N], ac_comp
 }
 
 int main() {
-
 	ac_complex<ac_fixed<32, 16, true> > tableau[N];
 	ac_complex<ac_fixed<32, 16, true> > tableau_c[N];
 	ac_complex<ac_fixed<32, 16, true> > matrix_entry[N][N];
-//	tableau[0] = 0;
-//	tableau[1] = 15;
-//	tableau[2] = 2;
-//	tableau[3] = 30;
-//	tableau[4] = 4;
-//	tableau[5] = 57;
-//	tableau[6] = 6;
-//	tableau[7] = 7;
-
-//	calculFFT(tableau, tableau_c);
-//	for (ac_int<32, true> i = 0; i < N; i++) {
-//		cout << "tab[" << i << "] = " << tableau_c[i] << endl;
-//	}
+	ac_fixed<32, 16, true> tableau_ampli[N];
 
 	matrix_entry[0][0] = 0;
 	matrix_entry[0][1] = 1;
@@ -116,6 +115,8 @@ int main() {
 	matrix_entry[3][1] = 13;
 	matrix_entry[3][2] = 14;
 	matrix_entry[3][3] = 15;
+
+
 	binningData(matrix_entry, tableau);
 	cout << "--------------TAB------------"<<endl;
 	for (ac_int<32, true> i = 0; i < N; i++) {
@@ -126,6 +127,12 @@ int main() {
 	cout << "--------------TAB_C------------"<<endl;
 	for (ac_int<32, true> i = 0; i < N; i++) {
 		cout << "tab[" << i << "] = " << tableau_c[i] << endl;
+	}
+
+	calculAmplitude(tableau_c, tableau_ampli);
+	cout << "--------------TAB_AMPLI------------"<<endl;
+	for (ac_int<32, true> i = 0; i < N; i++) {
+		cout << "tab[" << i << "] = " << tableau_ampli[i] << endl;
 	}
 	return 0;
 }
